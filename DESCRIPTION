@@ -7,7 +7,7 @@ Title: What the Package Does (Title Case)
 Author: Alina Bakhitova
 Maintainer: The package maintainer <alina.bahitova@gmail.com>
 Description: More about what it does (maybe more than one line)
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 License: CC0
 URL: https://github.com/liddlle/exmplr

@@ -4,7 +4,7 @@
 #' into tibble objects. After checking that the file exists, the function suppress
 #' messages produced by read_csv().
 #'
-#' @param filename Either a path to a file, a connection, or literal data (either a single string or a raw vector).
+#' @param filename Either a path to a file or a file name (a single string).
 #'
 #' @return This function returns a tibble object, exported from the user's csv file.
 #'
@@ -12,18 +12,24 @@
 #' file is not a csv object.
 #'
 #' @examples
-#' fars_read(readr_example("mtcars.csv"))
-#' my_df <- fars_read(readr_example("mtcars.csv"))
+#' fars_read(accident_2013.csv.bz2)
+#' my_df <- fars_read(accident_2013.csv.bz2)
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
 #' @export
 fars_read <- function(filename) {
-  if(!file.exists(filename))
+  if(!file.exists(filename) &
+     !file.exists(system.file("extdata", filename, package = "exmplr")))
     stop("file '", filename, "' does not exist")
+  else if (file.exists(filename)){
   data <- suppressMessages({
     readr::read_csv(filename, progress = FALSE)
-  })
+  })}
+  else {
+    data <- suppressMessages({
+      readr::read_csv(system.file("extdata", filename, package = "exmplr"), progress = FALSE)
+    })}
   dplyr::tbl_df(data)
 }
 

@@ -1,10 +1,10 @@
 ---
-title: "Vignette Title"
+title: "FARS functions"
 author: "Alina Bakhitova"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{FARS-functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,50 +16,46 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+Dear reader! 
+Have you ever downloaded the US Fatality Analysis Reporting System data and thought 'Oh, I might need to write an R package based on it'?
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+Me neither, but let's do that anyway :) 
 
-## Vignette Info
+##fars_read()
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+The functions can do many things. If you ever got tired from reading endless warning and other messages in red in the console, you can always use the first function `fars_read()`
 
-## Styles
+And because we are dealing with the FARS data -- for the sake of the exaple, we added a sample csv file to a package directory. So don't you worry about it
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+```{r}
+my_df = fars_read("accident_2013.csv.bz2")
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+head(my_df,10)
+```
 
-## Figures
+In case you you need the raw file, you can access it using the following path:
+`system.file("extdata", "accident_2013.csv.bz2", package = "exmplr")`
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+## make_filename()
 
+The names of the FARS data files are complex, especially of the .bz2 compression. Let's try to deal with that. You can simply provide the year that you need to access and then use the result as an input to the `fars_read()` function.  
+```{r}
+make_filename(2013)
+```
+
+## fars_summarize_years()
+
+You can also try and summarise the number of observations per month for a given year.  You can do that by providing a year to the `fars_summarize_years()` function
+```{r}
+knitr::kable(fars_summarize_years(2013))
+```
+
+
+
+## fars_map_state()
+
+We can also build a beautiful bw maps with the distribution of accidents accross any of US state.
 ```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+fars_map_state(1, 2013)
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
