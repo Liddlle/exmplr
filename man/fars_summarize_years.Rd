@@ -7,7 +7,7 @@
 fars_summarize_years(years)
 }
 \arguments{
-\item{year}{an R object. Must be an integer or a character vector of length 1 or more,
+\item{years}{an R object. Must be an integer or a character vector of length 1 or more,
 containing any year}
 }
 \value{

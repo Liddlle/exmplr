@@ -6,7 +6,7 @@ Imports: dplyr, readr, tidyr, maps, graphics, magrittr
 Title: analysing FARS data
 Author: Alina Bakhitova
 Maintainer: The package maintainer <alina.bahitova@gmail.com>
-Description: Functions to analyse the US FARS data
+Description: Functions to analyse the US FARS data. Builds map of accident by state.
 Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 License: CC0

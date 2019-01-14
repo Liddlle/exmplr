@@ -7,7 +7,7 @@
 fars_read_years(years)
 }
 \arguments{
-\item{year}{an R object. Must be an integer or a character vector of length 1, containing any year}
+\item{years}{an R object. Must be an integer or a character vector of length 1, containing any year}
 }
 \value{
 This function returns a tibble object, containing a column with month exported from the

@@ -22,7 +22,7 @@ The function will not work correctly if provided with a wrong filepath or if a
 file is not a csv object.
 }
 \examples{
-fars_read(accident_2013.csv.bz2)
-my_df <- fars_read(accident_2013.csv.bz2)
+fars_read("accident_2013.csv.bz2")
+my_df <- fars_read("accident_2013.csv.bz2")
 
 }

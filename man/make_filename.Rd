@@ -23,6 +23,6 @@ an integer. The function will give errors if provided with an object with  a len
 }
 \examples{
 make_filename(2013)
-my_df <- read_csv(make_filename(2013))
+my_df <- fars_read(make_filename(2013))
 
 }
