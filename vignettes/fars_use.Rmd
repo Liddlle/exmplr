@@ -28,6 +28,7 @@ The functions can do many things. If you ever got tired from reading endless war
 And because we are dealing with the FARS data -- for the sake of the exaple, we added a sample csv file to a package directory. So don't you worry about it
 
 ```{r}
+library(exmplr)
 my_df = fars_read("accident_2013.csv.bz2")
 
 head(my_df,10)
@@ -47,7 +48,7 @@ make_filename(2013)
 
 You can also try and summarise the number of observations per month for a given year.  You can do that by providing a year to the `fars_summarize_years()` function
 ```{r}
-knitr::kable(fars_summarize_years(2013))
+fars_summarize_years(2013)
 ```
 
 

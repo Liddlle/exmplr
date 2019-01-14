@@ -7,7 +7,7 @@
 fars_read(filename)
 }
 \arguments{
-\item{filename}{Either a path to a file, a connection, or literal data (either a single string or a raw vector).}
+\item{filename}{Either a path to a file or a file name (a single string).}
 }
 \value{
 This function returns a tibble object, exported from the user's csv file.
@@ -22,7 +22,7 @@ The function will not work correctly if provided with a wrong filepath or if a
 file is not a csv object.
 }
 \examples{
-fars_read(readr_example("mtcars.csv"))
-my_df <- fars_read(readr_example("mtcars.csv"))
+fars_read(accident_2013.csv.bz2)
+my_df <- fars_read(accident_2013.csv.bz2)
 
 }

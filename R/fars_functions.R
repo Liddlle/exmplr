@@ -12,8 +12,8 @@
 #' file is not a csv object.
 #'
 #' @examples
-#' fars_read(accident_2013.csv.bz2)
-#' my_df <- fars_read(accident_2013.csv.bz2)
+#' fars_read("accident_2013.csv.bz2")
+#' my_df <- fars_read("accident_2013.csv.bz2")
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
@@ -64,7 +64,7 @@ make_filename <- function(year) {
 #' Reporting System. It will return two columns - column with a month and column containing a
 #' requested year.
 #'
-#' @param year an R object. Must be an integer or a character vector of length 1, containing any year
+#' @param years an R object. Must be an integer or a character vector of length 1, containing any year
 #'
 #' @return This function returns a tibble object, containing a column with month exported from the
 #' data and a year for which the month data was accessed. If provided with miltiple years -- it
@@ -77,6 +77,7 @@ make_filename <- function(year) {
 #' my_df <- fars_read_years(2013)
 #'
 #' @importFrom dplyr mutate select
+#' @importFrom magrittr "%>%"
 #'
 #' @export
 fars_read_years <- function(years) {
@@ -99,7 +100,7 @@ fars_read_years <- function(years) {
 #' For a given year this function allows for calculating the number of observations per
 #' month for the US Fatality Analysis Reporting System data.
 #'
-#' @param year an R object. Must be an integer or a character vector of length 1 or more,
+#' @param years an R object. Must be an integer or a character vector of length 1 or more,
 #' containing any year
 #'
 #' @return This function returns a tibble object containing a column with month exported from the
@@ -115,6 +116,7 @@ fars_read_years <- function(years) {
 #'
 #' @importFrom dplyr bind_rows group_by summarize
 #' @importFrom tidyr spread
+#' @importFrom magrittr "%>%"
 #'
 #' @export
 fars_summarize_years <- function(years) {
