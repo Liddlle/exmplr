@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Liddlle/exmplr.svg?branch=master)](https://travis-ci.org/Liddlle/exmplr)
+
 # exmplr
 
 The goal of exmplr is to make the analysis of the FARS data a bit easier 
