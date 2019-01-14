@@ -18,7 +18,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 fars_summarize_years(2013)
-fars_summarize_years(c(2013,2014))
+  fars_summarize_years(c(2013,2014))
 ```
 
 ## Also, you can draw cool maps 
